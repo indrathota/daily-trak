@@ -1,0 +1,17 @@
+{
+  "name": "daily-trak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "lite-server -c config.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "indra mohan thota",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.9.3",
+    "lite-server": "^2.5.4",
+    "xlsx": "^0.15.6"
+  }
+}
