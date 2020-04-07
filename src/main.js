@@ -10,14 +10,14 @@ var ExcelToJSON = function () {
                 type: 'binary'
             });
             workbook.SheetNames.forEach(function (sheetName) {
-                // Here is your object
                 var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
                 var json_object = JSON.stringify(XL_row_object);
-                let labels = [];
-                XL_row_object.forEach(pair => labels.push(pair.Name));
-                chart.data.labels = XL_row_object.keys();
-                chart.data.datasets.data = XL_row_object.values();
-                chart.render();
+                let labels = [], data = [];
+                XL_row_object.forEach(pair => {
+                    labels.push(pair.Name);
+                    data.push(pair.Marks);
+                });
+                addData(chart, labels, data);
             })
         };
 
@@ -28,6 +28,16 @@ var ExcelToJSON = function () {
         reader.readAsBinaryString(file);
     };
 };
+
+function addData(chart, label, data) {
+    console.log(chart);
+    chart.data.labels = label;
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data = data;
+    });
+    chart.update();
+}
+
 var customFile = document.getElementById('customFile');
 console.log('Custom File', customFile);
 customFile.addEventListener('change', (evt) => {
@@ -42,7 +52,7 @@ var chart = new Chart(ctx, {
     data: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [{
-            label: 'My First dataset',
+            label: 'Marks',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [0, 10, 5, 2, 20, 30, 45]
