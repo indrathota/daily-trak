@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="./node_modules/xlsx/dist/shim.min.js"></script>
     <script src="./node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="./node_modules/lodash/lodash.min.js"></script>
 </head>
 
 <body>
@@ -24,14 +25,33 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="form-group">
+                    <select id="week" class="form-control">
+                        <option value="1" selected>Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                        <option value="4">Week 4</option>
+                        <option value="5">Week 5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" class="custom-file-input" id="customFile" required>
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
             </div>
         </div>
         <br />
-        <canvas id="myChart"></canvas>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div id="table">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <!-- <canvas id="myChart"></canvas> -->
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
